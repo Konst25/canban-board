@@ -1,9 +1,13 @@
 .red,
 .yellow,
 .green {
+    display: flex;
+    flex-direction: column;
     width: 385px;
     min-height: 30vh;
     text-align: center;
+    padding: 10px;
+    padding-top: 0;
     border-radius: 7px;
 }
 
@@ -18,4 +22,29 @@
 .green {
     border: 2px solid #11f509;
     color: #11f509;
+}
+
+.column__content {
+    flex-grow: 4;
+    margin-bottom: 10px;
+}
+
+.button {
+    padding: 5px 0;
+    background-color: transparent;
+    border: 2px solid #0532d0;
+    border-radius: 5px;
+    color: #0532d0;
+    font-size: 18px;
+    font-weight: 600;
+    transition: all 0.5s;
+}
+
+.button:hover {
+    background-color: #0532d0;
+    color: white;
+}
+
+.hidden {
+    display: none;
 }

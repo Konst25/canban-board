@@ -10,7 +10,7 @@ function App() {
             <Board>
                 <Header />
                 <div className='column__container'>
-                    <Column title={'To Do'} color={'red'} />
+                    <Column title={'To Do'} color={'red'} button={true} />
                     <Column title={'In Progress'} color={'yellow'} />
                     <Column title={'Done'} color={'green'} />
                 </div>
