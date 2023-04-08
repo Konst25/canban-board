@@ -1,22 +1,21 @@
 import Logo from '../media/canban.png';
 import Account from '../media/account.jpg';
+import '../styles/header.css';
 
 function Header() {
     return (
         <header>
-            <div className='container'>
-                <div className='header'>
-                    <div className='header_logo'>
-                        <a href='/' className='header_logo-link'>
-                            <img src={Logo} alt='logo' />
-                        </a>
-                    </div>
+            <div className='header'>
+                <div className='header__logo'>
+                    <a href='/' className='header__logo_link'>
+                        <img src={Logo} alt='logo' />
+                    </a>
+                </div>
 
-                    <div className='header_register'>
-                        <a href='/' className='header_register-link'>
-                            <img src={Account} alt='Account' />
-                        </a>
-                    </div>
+                <div className='header__register'>
+                    <a href='/' className='header__register_link'>
+                        <img src={Account} alt='Account' />
+                    </a>
                 </div>
             </div>
         </header>

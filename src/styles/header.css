@@ -6,20 +6,19 @@
     padding: 10px 20px;
     border-radius: 7px;
     border: 2px solid #0532d0;
+    margin-bottom: 20px;
 }
 
-.header_register {
+.header__register {
     width: 50px;
-    height: 50px;
 }
 
-.header_register-link {
+.header__register_link {
     display: block;
-    height: 70px;
     border-radius: 50%;
 }
 
-.header_register-link img {
+.header__register_link img {
     display: block;
     width: 100%;
     border-radius: 50%;

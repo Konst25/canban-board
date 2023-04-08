@@ -1,18 +1,11 @@
 import React from 'react';
-import { Task } from './Task';
 import '../styles/column.css';
 
-function Column() {
+function Column(props) {
     return (
-        <React.Fragment>
-            <div className='columns'>
-                <div className='container'>
-                    <div className='column_container'>
-                        <Task />
-                    </div>
-                </div>
-            </div>
-        </React.Fragment>
+        <div className={props.color}>
+            <h2>{props.title}</h2>
+        </div>
     );
 }
 

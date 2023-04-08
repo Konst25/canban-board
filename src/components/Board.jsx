@@ -1,16 +1,11 @@
 import React from 'react';
 import '../styles/board.css';
-import { Header } from '../layout/Header';
-import { Column } from './Column';
 
-function Board() {
+function Board(props) {
     return (
-        <React.Fragment>
-            <div className='background'>
-                <Header />
-                <Column />
-            </div>
-        </React.Fragment>
+        <div className='background'>
+            <div className='container'>{props.children}</div>
+        </div>
     );
 }
 
