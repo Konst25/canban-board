@@ -16,12 +16,12 @@
     color: #c90202;
 }
 .yellow {
-    border: 2px solid #ffbb00;
-    color: #ffbb00;
-}
-.green {
     border: 2px solid #11f509;
     color: #11f509;
+}
+.green {
+    border: 2px solid #6409f5;
+    color: #6409f5;
 }
 
 .column__content {
