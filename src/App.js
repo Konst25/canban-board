@@ -12,13 +12,21 @@ function App() {
     const [tasks, setTasks] = useState([]);
 
     const [task, setTask] = useState({ title: '', descr: '' });
+    console.log(task);
+    console.log(setTask);
 
     const [modal, setModal] = useState(false);
 
+    // Добавляет задачу
     const addNewTask = (e) => {
         e.preventDefault();
         setTasks([...tasks, { ...task, id: Date.now() }]);
         setTask({ title: '', descr: '' });
+    };
+
+    // Удаляет задачу
+    const deleteTask = (task) => {
+        setTasks(tasks.filter((t) => t.id !== task.id));
     };
 
     return (
@@ -59,7 +67,9 @@ function App() {
                         {tasks.map((task, index) => (
                             <Task number={index + 1} task={task}>
                                 <Button>Edit</Button>
-                                <Button>Delete</Button>
+                                <Button onClick={() => deleteTask(task)}>
+                                    Delete
+                                </Button>
                             </Task>
                         ))}
                         <Button onClick={() => setModal(true)}>Add Task</Button>
