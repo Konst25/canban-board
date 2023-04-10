@@ -9,27 +9,36 @@ import { Input } from './layout/input/Input';
 import { Task } from './components/Task';
 
 function App() {
+    const [tasks, setTasks] = useState([]);
+
+    const [task, setTask] = useState({ title: '', descr: '' });
+
     const [modal, setModal] = useState(false);
-    const [title, setTitle] = useState('');
-    const [descr, setDescr] = useState('');
 
     const addNewTask = (e) => {
         e.preventDefault();
+        setTasks([...tasks, { ...task, id: Date.now() }]);
+        setTask({ title: '', descr: '' });
     };
 
     return (
         <React.Fragment>
+            {/* Модальное окно */}
             <Modal visible={modal} setVisible={setModal}>
                 <form>
                     <Input
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        value={task.title}
+                        onChange={(e) =>
+                            setTask({ ...task, title: e.target.value })
+                        }
                         type={'text'}
                         placeholder={'Title task'}
                     />
                     <Input
-                        value={descr}
-                        onChange={(e) => setDescr(e.target.value)}
+                        value={task.descr}
+                        onChange={(e) =>
+                            setTask({ ...task, descr: e.target.value })
+                        }
                         type={'text'}
                         placeholder={'Description task'}
                     />
@@ -37,22 +46,29 @@ function App() {
                     <Button onClick={addNewTask}>Add</Button>
                 </form>
             </Modal>
+
+            {/* Основной компонент приложения */}
             <Board>
+                {/* Шапка */}
                 <Header />
 
+                {/* Общий контейнер */}
                 <div className='column__container'>
+                    {/* Компонент To Do */}
                     <Column title={'To Do'} color={'red'}>
-                        <Task
-                            title={'Заголовок задачи'}
-                            descr={
-                                'Описание задачи Lorem ipsum dolor site amet consectetur adipisicing elit. Cumque, iste! Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid, aperiam.'
-                            }>
-                            <Button>Edit</Button>
-                            <Button>Delete</Button>
-                        </Task>
+                        {tasks.map((task, index) => (
+                            <Task number={index + 1} task={task}>
+                                <Button>Edit</Button>
+                                <Button>Delete</Button>
+                            </Task>
+                        ))}
                         <Button onClick={() => setModal(true)}>Add Task</Button>
                     </Column>
+
+                    {/* Компонент In Progress */}
                     <Column title={'In Progress'} color={'yellow'} />
+
+                    {/* Компонент Done */}
                     <Column title={'Done'} color={'green'} />
                 </div>
             </Board>

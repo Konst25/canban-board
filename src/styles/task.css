@@ -10,7 +10,7 @@
 }
 
 .task__content {
-    max-width: 83%;
+    width: 83%;
     overflow: auto;
     text-align: justify;
 }

@@ -1,17 +1,15 @@
 import '../styles/task.css';
 
-function Task({ title, descr, children, ...props }) {
+function Task({ children, number, task }) {
     return (
         <div className='task'>
             <div className='task__content'>
-                <h3>{title}</h3>
-                <span>{descr}</span>
+                <h3>
+                    {number}. {task.title}
+                </h3>
+                <span>{task.descr}</span>
             </div>
-            <div className='task__buttons'>
-                {children}
-                {/* <button>Edit</button>
-                <button>Delete</button> */}
-            </div>
+            <div className='task__buttons'>{children}</div>
         </div>
     );
 }
