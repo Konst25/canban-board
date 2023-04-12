@@ -1,6 +1,7 @@
+import React from 'react';
 import '../styles/task.css';
 
-function Task({ children, number, task }) {
+const Task = ({ children, number, task }) => {
     return (
         <div className='task'>
             <div className='task__content'>
@@ -12,6 +13,6 @@ function Task({ children, number, task }) {
             <div className='task__buttons'>{children}</div>
         </div>
     );
-}
+};
 
 export { Task };
