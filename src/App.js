@@ -14,9 +14,29 @@ function App() {
             ? JSON.parse(localStorage.getItem('tasks'))
             : [],
     );
+
     const [task, setTask] = useState({ title: '', descr: '' });
     const [modal, setModal] = useState(false);
     const [edit, setEdit] = useState(false);
+    let copy = {};
+
+    // Открывает форму редактирования
+    const editTask = (task) => {
+        setModal(true);
+        setEdit(true);
+        copy = Object.assign(copy, task);
+        deleteTask(task);
+        setTask(copy);
+    };
+
+    // Добавляет отредактированную задачу
+    const addEditTask = (e) => {
+        e.preventDefault();
+        setTasksWithSave([...tasks, { ...task, id: Date.now() }]);
+        setEdit(false);
+        setModal(false);
+        setTask({ title: '', descr: '' });
+    };
 
     // Сохраняет данные в localStorage
     const setTasksWithSave = (tasks) => {
@@ -24,30 +44,18 @@ function App() {
         localStorage.setItem('tasks', JSON.stringify(tasks));
     };
 
-    const editTask = (task) => {
-        setModal(true);
-        setEdit(true);
-    };
-
-    const addEditTask = (e) => {
-        e.preventDefault();
-        setEdit(false);
-        setTasksWithSave({ ...task });
-        setModal(false);
-    };
-
     // Добавляет задачу
     const addNewTask = (e) => {
         e.preventDefault();
         setTasksWithSave([...tasks, { ...task, id: Date.now() }]);
         setTask({ title: '', descr: '' });
+        setModal(false);
     };
-
-    console.log(edit);
 
     // Удаляет задачу
     const deleteTask = (task) => {
         setTasksWithSave(tasks.filter((t) => t.id !== task.id));
+        setTask({ title: '', descr: '' });
     };
 
     return (
@@ -59,8 +67,20 @@ function App() {
                     setVisible={setModal}
                     swichForm={setEdit}>
                     <form>
-                        <Input value={task.title} type={'text'} />
-                        <Input value={task.descr} type={'text'} />
+                        <Input
+                            value={task.title}
+                            onChange={(e) =>
+                                setTask({ ...task, title: e.target.value })
+                            }
+                            type={'text'}
+                        />
+                        <Input
+                            value={task.descr}
+                            onChange={(e) =>
+                                setTask({ ...task, descr: e.target.value })
+                            }
+                            type={'text'}
+                        />
 
                         <Button onClick={addEditTask}>Add editTask</Button>
                     </form>
@@ -108,7 +128,9 @@ function App() {
                                     key={task.id}
                                     number={index + 1}
                                     task={task}>
-                                    <Button onClick={editTask}>Edit</Button>
+                                    <Button onClick={() => editTask(task)}>
+                                        Edit
+                                    </Button>
                                     <Button onClick={() => deleteTask(task)}>
                                         Delete
                                     </Button>

@@ -1,9 +1,9 @@
 import React from 'react';
 import '../styles/task.css';
 
-const Task = ({ children, number, task }) => {
+const Task = ({ children, number, task, ...props }) => {
     return (
-        <div className='task'>
+        <div className='task' {...props}>
             <div className='task__content'>
                 <h3>
                     {number}. {task.title}
