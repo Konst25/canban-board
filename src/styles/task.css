@@ -3,14 +3,15 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    border: 1px solid #c90202;
+    border: 1px solid;
     background-color: #fff;
     text-align: left;
-    padding: 0 5px;
+    padding: 5px 5px;
 }
 
 .task__content {
     width: 83%;
+    height: 100%;
     overflow: auto;
     text-align: justify;
 }
@@ -24,6 +25,6 @@
     flex-direction: column;
 }
 
-.task__buttons button {
-    margin: 5px 0;
+button:first-child {
+    margin-bottom: 5px;
 }

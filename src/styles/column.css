@@ -1,8 +1,9 @@
 .red,
-.yellow,
-.green {
+.green,
+.blue {
     display: flex;
     flex-direction: column;
+
     width: 385px;
     min-height: 30vh;
     text-align: center;
@@ -15,11 +16,11 @@
     border: 2px solid #c90202;
     color: #c90202;
 }
-.yellow {
+.green {
     border: 2px solid #11f509;
     color: #11f509;
 }
-.green {
+.blue {
     border: 2px solid #6409f5;
     color: #6409f5;
 }
