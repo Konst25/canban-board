@@ -13,6 +13,26 @@
     width: 50px;
 }
 
+.header__logo_link {
+    text-decoration: none;
+    color: #c90202;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.descr {
+    height: 8px;
+    margin-left: -40px;
+}
+.descr h1 {
+    line-height: 0;
+    color: #6409f5;
+}
+
+.header__logo {
+    height: 47px;
+}
+
 .header__register_link {
     display: block;
     border-radius: 50%;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Board } from './components/Board';
 import { Header } from './layout/Header';
 import './App.css';
@@ -6,8 +6,22 @@ import { Modal } from './components/Modal';
 import { Button } from './layout/button/Button';
 import { Input } from './layout/input/Input';
 import ColumnList from './components/ColumnList';
+import axios from 'axios';
 
 function App() {
+    // Состояние доски
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        axios
+            .get('http://127.0.0.1:8000/')
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }, []);
+
     // Состояния колонок
     const [columns, setColumns] = useState([
         { id: 1, title: 'To do', color: 'red' },
@@ -191,7 +205,7 @@ function App() {
             {/* Основной компонент приложения */}
             <Board>
                 {/* Шапка */}
-                <Header />
+                <Header data={data} />
 
                 {/* Общий контейнер */}
                 <div className='column__container'>
